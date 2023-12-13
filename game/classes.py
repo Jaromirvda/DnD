@@ -1,14 +1,17 @@
-from xml.sax.handler import property_encoding
+
+from dobbelstenen import dobbelsteen_x
 
 
 class Charachter:
-    def __init__(self, race, _class, age, alignment, size, language):
+    def __init__(self, race, _class, age, alignment, size, language, level, exp):
         self.race = race
         self._class = _class
         self.age = age 
         self.alignment = alignment
         self.size = size
         self.language = language
+        self.level = level
+        self.exp = exp
 
 
 class Wizard(Charachter):
@@ -22,6 +25,16 @@ class Wizard(Charachter):
     def speed(self):
         return self.__speed
     
+    @speed.setter
+    def speed(self):
+        if self.level +1:
+            ans = input('Would you like to upgrade your speed?\n')
+            if ans.lower() == 'yes':
+                ans = 'd12'
+                dobbelsteen_x(ans)
+                self.__speed = self.__speed + dobbelsteen_x(ans)
+
+    
     @property
     def armor(self):
         return self.__armor
@@ -29,6 +42,11 @@ class Wizard(Charachter):
     @property 
     def damage(self):
         return self.__damage
+    
+    @property
+    def magic_damage(self):
+        return self.__magic_damage
+    
 class Rogue(Charachter):
     def __init__(self, armor, speed, damage, stealth):
         self.__armor = armor 

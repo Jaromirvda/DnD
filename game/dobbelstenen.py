@@ -26,7 +26,7 @@ def dobbelsteen_x(x):
 
 
 
-def rollen(x,y,z):    
+def rollen(x,y):    
     
     o = []
     for i in range(y):
@@ -34,4 +34,3 @@ def rollen(x,y,z):
         o.append(w)
     return o
 
-   
