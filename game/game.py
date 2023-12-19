@@ -71,13 +71,21 @@ def character_selection():
 
         if _class.lower() == 'rogue':
             race = input(f'\n*****************************\nWhat race of {_class} would you like to be: ')
+            if race == ' ' or '':
+                raise NoRaceError()
             name = input(f'\n*****************************\nTell me your name brave {race} {_class}: ')
             if name == '' or ' ':
                 raise NoNameError()
             age = int(input('\n*****************************\nHow old are you: '))
+            if name == '' or ' ':
+                raise NoAgeError()
             size = input('\n*****************************\nWhat is you size: \nsmall\naverage\ntall\n')
+            if size == '' or ' ':
+                size = 'Midget'
             alignment = input('\n*****************************\nWhat are your believes: ')
             language = input("\n*****************************\nWhat language do you speak: ")
+            if name == '' or ' ':
+                raise NoLanguageError()
 
             damage= 3 #is op 5
             armor = 2 #is op 5
@@ -126,8 +134,11 @@ def character_selection():
             print(p1.__dict__, p1stats.__dict__)
         
         if _class.lower() != 'wizard' or _class.lower() != 'rogue' or _class.lower() != 'paladin':
-            raise NoClassError()
             character_selection()
+            raise NoClassError()
+        
+        if _class.lower() == 'no':
+            print('Goodbye Hero! Until next time.')
 
 
 
