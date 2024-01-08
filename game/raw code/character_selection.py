@@ -1,5 +1,6 @@
 
-from signal import raise_signal
+
+from ast import Return
 import pygame
 from errors import NoAgeError, NoClassError, NoLanguageError, NoNameError, NoRaceError
 from dobbelstenen import rollen
@@ -68,6 +69,19 @@ def character_selection():
             p1stats = classes. Wizard(armor ,speed, damage, magic_damage)
 
             print(p1.__dict__, p1stats.__dict__)
+            for i,y in p1.__dict__.items():
+                print(f"{i}: {y}")
+            ans = input('Is all of this correct?\n')
+            if ans.lower() == 'y' or 'yes':
+                print(f'Of we go {name}')
+                return p1, p1stats
+            
+            elif ans.lower() == 'n' or 'no':
+                for i in p1.__dict__:
+                    print(i)
+                for i in p1stats.__dict__:
+                    print(i)
+
 
         if _class.lower() == 'rogue':
             race = input(f'\n*****************************\nWhat race of {_class} would you like to be: ')
@@ -97,6 +111,24 @@ def character_selection():
             p1 = classes.Charachter(race,name,age,size,alignment,language, level, exp)
             p1stats = classes.Rogue(damage,armor,speed,stealth)
             print(p1.__dict__, p1stats.__dict__)
+            for i,y in p1.__dict__.items():
+                print(f"{i}: {y}")
+            ans = input('Is all of this correct?\n')
+            if ans.lower() == 'y' or 'yes':
+                print(f'Of we go {name}')
+                return p1, p1stats
+            
+            elif ans.lower() == 'n' or 'no':
+                for i in p1.__dict__:
+                    print(i)
+                    ans = input('What do you want to change?\n')
+                    if ans.lower() == 'name':
+                        name= input('What should your name be?\n')
+                    elif ans.lower() == 'race':
+                        race = input('What should your race be?\n')
+
+                for i in p1stats.__dict__:
+                    print(i)
             
         if _class.lower() == 'paladin':
 
@@ -132,13 +164,29 @@ def character_selection():
             p1 = classes.Charachter(race,name,age,size,alignment,language, level, exp)
             p1stats = classes.Paladin(damage,armor,speed,true_damage)
             print(p1.__dict__, p1stats.__dict__)
+
+            for i,y in p1.__dict__.items():
+                print(f"{i}: {y}")
+            ans = input('Is all of this correct?\n')
+            if ans.lower() == 'y' or 'yes':
+                print(f'Of we go {name}')
+                return p1, p1stats
+            
+            elif ans.lower() == 'n' or 'no':
+                for i in p1.__dict__:
+                    print(i)
+                for i in p1stats.__dict__:
+                    print(i)
+
+            
         
         if _class.lower() != 'wizard' or _class.lower() != 'rogue' or _class.lower() != 'paladin':
             character_selection()
             raise NoClassError()
         
-        if _class.lower() == 'no':
+        if ans.lower() == 'no':
             print('Goodbye Hero! Until next time.')
+
 
 
 
@@ -152,8 +200,7 @@ def Dobbelen():
     print(f'u heeft {w} gerolled.')
 
 
-if __name__ == '__main__':
-    character_selection()
 
 
+character_selection()
 
