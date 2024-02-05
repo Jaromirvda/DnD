@@ -1,7 +1,7 @@
 import psycopg2
 
 # verander de juiste info hieronder voor jou eigen pgadmin info
-conn = psycopg2.connect(host='localhost', database='dnd_groepswerk', user='postgres', password='Skylander?2110')
+conn = psycopg2.connect(host='localhost', database='', user='postgres', password='')
 cur = conn.cursor()
 
 # Tier 1 Monsters

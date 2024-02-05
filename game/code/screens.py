@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+import os
 # In deze file vind u alle soorten schermen die ontwikkeld werden voor de game. alle benodigdheden etc. zijn erbij inbegrepen.
 pygame.init()
 
@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('D&D Game')
 
 # Achtergrondafbeelding van het hoofdscherm
-background = pygame.image.load('C:/Users/vdaja/OneDrive/Documenten/School/python/DnD/Assets/bb.jpg')
+background_image = pygame.image.load('C:/Users/vdaja/OneDrive/Documenten/School/python/DnD/Game/code/Assets/bb.jpg')
 
 
 # Kleuren en lettertype
